@@ -22,6 +22,17 @@ const config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        brand: {
+          primary: "hsl(var(--brand-primary))",
+          secondary: "hsl(var(--brand-secondary))",
+          tertiary: "hsl(var(--brand-tertiary))",
+          "gray-600": "hsl(var(--brand-gray-600))",
+          "gray-700": "hsl(var(--brand-gray-700))",
+          "text-primary": "hsl(var(--brand-text-primary))",
+          "text-secondary": "hsl(var(--brand-text-secondary))",
+          "text-tertiary": "hsl(var(--brand-text-tertiary))",
+          "fill-200": "hsl(var(--brand-fill-200))",
+        },
         background: {
           DEFAULT: "hsl(var(--background))",
           gradient: {
@@ -65,7 +76,17 @@ const config = {
           },
         },
         dialog: {
-          background: "hsl(var(--foreground) / 0.36)",
+          background: "hsl(--brand-text-tertiary)",
+        },
+        command: {
+          background: "hsl(var(--command-background))",
+          bar: {
+            foreground: "hsl(var(--brand-text-secondary))",
+            background: "hsl(var(--command-search-background))",
+          },
+          keys: {
+            foreground: "hsl(var(--command-keys-foreground))",
+          },
         },
       },
       borderRadius: {
@@ -82,21 +103,87 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "custom-fade-in": {
-          from: {
-            "--tw-enter-opacity": "initial",
-            "--tw-enter-scale": "initial",
-            "--tw-enter-rotate": "initial",
-            "--tw-enter-translate-x": "initial",
-            "--tw-enter-translate-y": "initial",
+        "custom-enter": {
+          "0%": {
+            width: "100%",
+            top: "0",
+            transform: "translateX(-50%)",
+            opacity: "0",
           },
+          "100%": {
+            width: "75%",
+            top: "50%",
+            opacity: "100%",
+          },
+        },
+        "custom-exit": {
+          "0%": {
+            width: "75%",
+            top: "50%",
+            opacity: "100%",
+          },
+          "100%": {
+            width: "100%",
+            top: "0",
+            transform: "translateX(-50%)",
+            opacity: "0",
+          },
+        },
+        "custom-command-bar-exit": {
+          "0%": {
+            width: "100%",
+            top: "0",
+            opacity: "100%",
+            left: "0",
+            transform: "translateX(0%)",
+          },
+          "100%": {
+            width: "80%",
+            top: "5%",
+            transform: "translateX(-50%)",
+            left: "50%",
+          },
+        },
+        "custom-command-bar-enter": {
+          "0%": {
+            width: "80%",
+            top: "5%",
+            transform: "translateX(-50%)",
+            left: "50%",
+            opacity: "0",
+          },
+          "100%": {
+            width: "100%",
+            top: "0",
+            opacity: "100%",
+            left: "0",
+            transform: "translateX(0%)",
+          },
+        },
+        "custom-command-list-open": {
+          "0%": { "max-height": "0" },
+          "40%,100%": { "max-height": `${532 + 72}px` },
+        },
+        "custom-command-list-close": {
+          "0%,40%": { "max-height": `${532 + 72}px` },
+          "100%": { "max-height": "0" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        custom:
-          "var(--animation-duration) cubic-bezier(var(--animation-curve))",
+        "custom-enter":
+          "custom-enter var(--animation-duration) cubic-bezier(var(--animation-curve))",
+        "custom-exit":
+          "custom-exit var(--animation-duration) cubic-bezier(var(--animation-curve))",
+        "custom-command-bar-exit":
+          "custom-command-bar-exit var(--animation-duration) cubic-bezier(var(--animation-curve))",
+        "custom-command-bar-enter":
+          "custom-command-bar-enter var(--animation-duration) cubic-bezier(var(--animation-curve))",
+        "custom-command-list-open":
+          "custom-command-list-open var(--animation-duration) cubic-bezier(var(--animation-curve))",
+        "custom-command-list-close":
+          "custom-command-list-close var(--animation-duration) cubic-bezier(var(--animation-curve))",
       },
       blur: {
         xs: "2px",

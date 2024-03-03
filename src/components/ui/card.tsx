@@ -64,7 +64,7 @@ const CardContent = React.forwardRef<
     ref={ref}
     className={cn(
       //delete h-52 later
-      "p-4 bg-card-content-background gap-6 border-[1px] border-card-content-border rounded-lg h-52",
+      "p-4 bg-card-content-background gap-6 border-[1px] border-card-content-border rounded-lg h-52 w-full",
       className
     )}
     {...props}
