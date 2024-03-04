@@ -90,30 +90,28 @@ export const CommandTabs = ({
   tabOnClick,
 }: CommandTabProps) => {
   return (
-    <div className="max-w-full">
-      <div className="flex flex-nowrap gap-2 whitespace-nowrap overflow-x-auto py-4 shadow-sm">
-        {commandTabVariants.map(({ tab, text, Icon, color }) => (
-          <Button
-            key={text}
-            variant="outline"
-            className={`rounded-full ${
-              activeTab === tab
-                ? `${color.button} text-white hover:${color.button} hover:text-white`
-                : `hover:bg-command-background`
-            }`}
-            onClick={() => tabOnClick(tab)}
-          >
-            {Icon && (
-              <Icon
-                className={`mr-1 duration-150 ${
-                  activeTab === tab ? `text-white` : `${color.icon}`
-                }`}
-              />
-            )}
-            {text}
-          </Button>
-        ))}
-      </div>
+    <div className="flex gap-2 flex-wrap py-4">
+      {commandTabVariants.map(({ tab, text, Icon, color }) => (
+        <Button
+          key={text}
+          variant="outline"
+          className={`rounded-full text-lg shadow-sm ${
+            activeTab === tab
+              ? `${color.button} text-white hover:${color.button} hover:text-white`
+              : `hover:bg-command-background`
+          }`}
+          onClick={() => tabOnClick(tab)}
+        >
+          {Icon && (
+            <Icon
+              className={`mr-1 duration-150 ${
+                activeTab === tab ? `text-white` : `${color.icon}`
+              }`}
+            />
+          )}
+          {text}
+        </Button>
+      ))}
     </div>
   );
 };

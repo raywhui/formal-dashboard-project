@@ -32,6 +32,13 @@ const config = {
           "text-secondary": "hsl(var(--brand-text-secondary))",
           "text-tertiary": "hsl(var(--brand-text-tertiary))",
           "fill-200": "hsl(var(--brand-fill-200))",
+          "fill-400": "hsl(var(--brand-fill-400))",
+          "color-100": "hsl(var(--brand-color-100))",
+          "color-600": "hsl(var(--brand-color-600))",
+          "blue-100": "hsl(var(--brand-blue-100))",
+          "blue-600": "hsl(var(--brand-blue-600))",
+          "teal-50": "hsl(var(--brand-teal-50))",
+          "teal-600": "hsl(var(--brand-teal-600))",
         },
         background: {
           DEFAULT: "hsl(var(--background))",
@@ -76,7 +83,7 @@ const config = {
           },
         },
         dialog: {
-          background: "hsl(--brand-text-tertiary)",
+          background: "hsl(var(--brand-text-tertiary))",
         },
         command: {
           background: "hsl(var(--command-background))",
@@ -112,14 +119,14 @@ const config = {
           },
           "100%": {
             width: "75%",
-            top: "50%",
+            top: "10vh",
             opacity: "100%",
           },
         },
         "custom-exit": {
           "0%": {
             width: "75%",
-            top: "50%",
+            top: "10vh",
             opacity: "100%",
           },
           "100%": {
@@ -136,21 +143,27 @@ const config = {
             opacity: "100%",
             left: "0",
             transform: "translateX(0%)",
+            "border-radius": "0",
+            "max-height": "90px",
           },
           "100%": {
-            width: "80%",
-            top: "5%",
+            width: "75%",
+            top: "10vh",
             transform: "translateX(-50%)",
             left: "50%",
+            "border-radius": "1rem",
+            "max-height": "70px",
           },
         },
         "custom-command-bar-enter": {
           "0%": {
-            width: "80%",
+            width: "75%",
             top: "5%",
             transform: "translateX(-50%)",
             left: "50%",
             opacity: "0",
+            "border-radius": "1rem",
+            "max-height": "70px",
           },
           "100%": {
             width: "100%",
@@ -158,14 +171,16 @@ const config = {
             opacity: "100%",
             left: "0",
             transform: "translateX(0%)",
+            "border-radius": "0",
+            "max-height": "90px",
           },
         },
         "custom-command-list-open": {
           "0%": { "max-height": "0" },
-          "40%,100%": { "max-height": `${532 + 72}px` },
+          "100%": { "max-height": `${532 + 72}px` },
         },
         "custom-command-list-close": {
-          "0%,40%": { "max-height": `${532 + 72}px` },
+          "0%": { "max-height": `${532 + 72}px` },
           "100%": { "max-height": "0" },
         },
       },

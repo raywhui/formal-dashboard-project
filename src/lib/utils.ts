@@ -14,10 +14,26 @@ import {
   Network,
   Plus,
 } from "iconoir-react";
+import {
+  AWSIcon,
+  DatadogIcon,
+  DatahubIcon,
+  GithubIcon,
+  S3Icon,
+  SplunkIcon,
+} from "@/components/Icons";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export const commandSuggestions = [
+  "How many times user X has made Y?",
+  "How many times has user group X has made Y query?",
+  "How many times user X has made Y?",
+  "How many times user X has made Y?",
+  "How many times user X has made Y?",
+];
 
 export const commandListItems = [
   {
@@ -30,26 +46,41 @@ export const commandListItems = [
       {
         title: "Catalog",
         Icon: Folder,
-        command: "⌥ C",
+        shortcut: "⌥ C",
         description: "Description of application",
+        command: {
+          title: "catalog search",
+          description: "Search the data catalog for datasets using a keyword.",
+          params: [{ label: "Keyword", color: "brand" }],
+        },
       },
       {
         title: "Observability",
         Icon: Eye,
-        command: "⌥ O",
+        shortcut: "⌥ O",
         description: "Description of application",
+        command: {
+          title: "observability status",
+          description: "Check the observability status of a specific dataset.",
+          params: [{ label: "Dataset", color: "brand" }],
+        },
       },
       {
         title: "Lineage",
         Icon: NetworkLeft,
-        command: "⌥ L",
+        shortcut: "⌥ L",
         description: "Description of application",
       },
       {
         title: "ETL",
         Icon: Shuffle,
-        command: "⌥ E",
+        shortcut: "⌥ E",
         description: "Description of application",
+        command: {
+          title: "etl Run",
+          description: "Run an ETL job by specifying its name.",
+          params: [{ label: "Job Name", color: "brand" }],
+        },
       },
     ],
   },
@@ -63,31 +94,55 @@ export const commandListItems = [
       {
         title: "Access",
         Icon: UserBadgeCheck,
-        command: "⌥ A",
+        shortcut: "⌥ A",
         description: "Description of application",
+        command: {
+          title: "access grant",
+          description: "Grant access to a specific user for a resource.",
+          params: [
+            { label: "User", color: "blue" },
+            { label: "Resource", color: "green" },
+          ],
+        },
       },
       {
         title: "Logs",
         Icon: WarningTriangle,
-        command: "⌥ G",
+        shortcut: "⌥ G",
         description: "Description of application",
+        command: {
+          title: "logs view",
+          description: "View security logs for a specific date and log type.",
+          params: [
+            { label: "Data", color: "blue" },
+            { label: "Type", color: "green" },
+          ],
+        },
       },
       {
         title: "Discovery",
         Icon: DashboardSpeed,
-        command: "⌥ D",
+        shortcut: "⌥ D",
         description: "Description of application",
       },
       {
         title: "Policies",
         Icon: PrivacyPolicy,
-        command: "⌥ P",
+        shortcut: "⌥ P",
         description: "Description of application",
+        command: {
+          title: "policies create",
+          description: "Create a security policy with specified rules.",
+          params: [
+            { label: "PolicyName", color: "blue" },
+            { label: "Rule", color: "green" },
+          ],
+        },
       },
       {
         title: "Compliance",
         Icon: DashboardSpeed,
-        command: "⌥ Q",
+        shortcut: "⌥ Q",
         description: "Description of application",
       },
     ],
@@ -100,9 +155,45 @@ export const commandListItems = [
     },
     items: [
       {
+        title: "AWS",
+        Icon: AWSIcon,
+        shortcut: "⌥ ↑ A",
+        description: "Description of application",
+      },
+      {
+        title: "Datadog",
+        Icon: DatadogIcon,
+        shortcut: "⌥ ↑ D",
+        description: "Description of application",
+      },
+      {
+        title: "Splunk",
+        Icon: SplunkIcon,
+        shortcut: "⌥ ↑ 3",
+        description: "Description of application",
+      },
+      {
+        title: "S3",
+        Icon: S3Icon,
+        shortcut: "⌥ ↑ G",
+        description: "Description of application",
+      },
+      {
+        title: "Github",
+        Icon: GithubIcon,
+        shortcut: "⌥ ↑ G",
+        description: "Description of application",
+      },
+      {
+        title: "datahub",
+        Icon: DatahubIcon,
+        shortcut: "⌥ ↑ G",
+        description: "Description of application",
+      },
+      {
         title: "Manage Store Apps",
         Icon: Plus,
-        command: "⌥ ↑ G",
+        shortcut: "⌥ ↑ G",
         description: "Description of application",
       },
     ],
@@ -117,20 +208,35 @@ export const commandListItems = [
       {
         title: "API Keys",
         Icon: Key,
-        command: "⌥K",
+        shortcut: "⌥K",
         description: "Description of application",
+        command: {
+          title: "apikeys create",
+          description: "Create a security policy with specified rules.",
+          params: [{ label: "Name", color: "blue" }],
+        },
       },
       {
         title: "Sigma",
         Icon: SigmaFunction,
-        command: "⌥ S",
+        shortcut: "⌥ S",
         description: "Description of application",
+        command: {
+          title: "sigma analyze",
+          description: "Analyze data using Sigma notation.",
+          params: [{ label: "Query", color: "blue" }],
+        },
       },
       {
         title: "Workflow",
         Icon: Network,
-        command: "⌥ W",
+        shortcut: "⌥ W",
         description: "Description of application",
+        command: {
+          title: "workflow start",
+          description: "Start a workflow by specifying its name.",
+          params: [{ label: "workflow", color: "blue" }],
+        },
       },
     ],
   },
