@@ -35,7 +35,30 @@ export const commandSuggestions = [
   "How many times user X has made Y?",
 ];
 
-export const commandListItems = [
+type CommandListItemsType = {
+  heading: string;
+  color: {
+    background: string;
+    text: string;
+  };
+  items: {
+    title: string;
+    Icon: React.ForwardRefExoticComponent<
+      | (Omit<React.SVGProps<SVGSVGElement>, "ref"> &
+          React.RefAttributes<SVGSVGElement>)
+      | JSX.Element
+    >;
+    description: string;
+    shortcut: string;
+    command?: {
+      title: string;
+      description: string;
+      params: { label: string; color: "brand" | "blue" | "green" }[];
+    };
+  }[];
+}[];
+
+export const commandListItems: CommandListItemsType = [
   {
     heading: "data",
     color: {
@@ -242,7 +265,7 @@ export const commandListItems = [
   },
 ];
 
-type HeatmapData = { x: string; y: string; value: number | null }[];
+type HeatmapData = { x: string; y: string; value: number }[];
 
 export const heatMapDataGenerator = () => {
   let data: HeatmapData = [];

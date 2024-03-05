@@ -4,7 +4,7 @@ import * as d3 from "d3";
 type HeatmapProps = {
   width: number;
   height: number;
-  data: { x: string; y: string; value: number | null }[];
+  data: { x: string; y: string; value: number }[];
 };
 
 export const Heatmap = ({ width, height, data }: HeatmapProps) => {
@@ -24,15 +24,17 @@ export const Heatmap = ({ width, height, data }: HeatmapProps) => {
       .padding(0.1);
   }, [data, height]);
 
-  const [min, max] = d3.extent(data.map((d) => d.value));
+  const [min, max] = d3.extent([...data.map((d) => d.value)]);
 
   // Color scale
   // .range(--brand-fill-100, --brand-primary)
   // hsl doesnt work very well, easier with hex values
+  if (min === undefined && max === undefined) return null;
+
   const colorScale = d3
-    .scaleSequential()
+    .scaleSequential<string>()
     .range(["#F1F5F9", "#3D6EFF"])
-    .domain([min, max]);
+    .domain([min, max]); // Handle undefined values
 
   // Build the rectangles
   const allRects = data.map((d, i) => {

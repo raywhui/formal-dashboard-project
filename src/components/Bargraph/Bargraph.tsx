@@ -18,7 +18,7 @@ export const Bargraph = ({ width, height, data }: BargraphProps) => {
       .domain(groups)
       .range([0, width])
       .paddingInner(BAR_PADDING);
-  }, [data, width]);
+  }, [width, groups]);
 
   const yScale = React.useMemo(() => {
     const [, max] = d3.extent(data.map((d) => d.value));

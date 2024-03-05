@@ -1,8 +1,10 @@
 import { cn } from "@/lib/utils";
 
+type Variant = keyof typeof paramVariantClassNames;
+
 type Params = {
   children: React.ReactNode;
-  variant: "brand" | "blue" | "green";
+  variant: Variant;
 };
 
 const paramVariantClassNames = {

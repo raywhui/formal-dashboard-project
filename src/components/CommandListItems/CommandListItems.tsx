@@ -19,8 +19,9 @@ interface CommandListItemsProps {
     items: {
       title: string;
       Icon: React.ForwardRefExoticComponent<
-        | Omit<React.SVGProps<SVGSVGElement>, "ref"> &
-            React.RefAttributes<SVGSVGElement>
+        | (Omit<React.SVGProps<SVGSVGElement>, "ref"> &
+            React.RefAttributes<SVGSVGElement>)
+        | JSX.Element
       >;
       description: string;
       shortcut: string;
@@ -169,26 +170,6 @@ export const CommandListItems = ({
           ))}
         </CommandGroup>
       ))}
-      {/* {list.map(
-        ({ heading, color, items }, k) =>
-          items.some((item) => item.command) && (
-            <CommandGroup key={k} index={k} heading={heading.toUpperCase()}>
-              {items.map(
-                ({ Icon, command }, l) =>
-                  command && (
-                    <CommandItems
-                      key={l}
-                      title={"/" + command?.title || ""}
-                      Icon={Icon}
-                      params={command.params}
-                      description={command?.description || ""}
-                      iconColor={color.text}
-                    />
-                  )
-              )}
-            </CommandGroup>
-          )
-      )} */}
     </ShadcnCommandList>
   );
 };

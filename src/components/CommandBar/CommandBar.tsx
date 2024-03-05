@@ -3,22 +3,13 @@
 import * as React from "react";
 import { LayoutGrid } from "lucide-react";
 import { DataTransferBoth, LongArrowDownLeft } from "iconoir-react";
-import { commandListItems, commandSuggestions } from "@/lib/utils";
-
-import {
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandShortcut,
-} from "@/components/ui/command";
+import { CommandDialog, CommandInput } from "@/components/ui/command";
 import { Button } from "@/components/ui/button";
 import SuggestedButton from "@/components/SuggestedButton";
 import CommandTabs from "@/components/CommandTabs";
 import CommandListItems from "@/components/CommandListItems";
 import { ActiveTabStrings } from "@/components/CommandTabs/CommandTabs";
+import { commandListItems, commandSuggestions } from "@/lib/utils";
 
 export const CommandBar = () => {
   const [open, setOpen] = React.useState(false);
