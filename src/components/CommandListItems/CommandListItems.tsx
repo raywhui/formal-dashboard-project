@@ -31,6 +31,7 @@ interface CommandListItemsProps {
       };
     }[];
   }[];
+  commandsMode: boolean;
 }
 
 type CommandItemsProps = {
@@ -113,11 +114,15 @@ const CommandGroup = ({ heading, index, children }: CommandGroupProps) => (
 
 export const CommandListItems = ({
   list,
-  commandsMode,
+  commandsMode = false,
 }: CommandListItemsProps) => {
   if (commandsMode) {
     return (
-      <ShadcnCommandList className="duration-200 transition-colors">
+      <ShadcnCommandList
+        className={`max-h-[calc(50vh+128px)] duration-200 transition-all ${
+          commandsMode ? "opacity-100" : "opacity-0"
+        }`}
+      >
         <ShadcnCommandEmpty>No commands found.</ShadcnCommandEmpty>
         {list.map(
           ({ heading, color, items }, i) =>
@@ -144,7 +149,11 @@ export const CommandListItems = ({
   }
 
   return (
-    <ShadcnCommandList className="duration-200 transition-colors">
+    <ShadcnCommandList
+      className={`duration-200 transition-all ${
+        commandsMode ? "opacity-0" : "opacity-100"
+      }`}
+    >
       <ShadcnCommandEmpty>No results found.</ShadcnCommandEmpty>
       {list.map(({ heading, color, items }, i) => (
         <CommandGroup key={i} index={i} heading={heading.toUpperCase()}>

@@ -48,7 +48,7 @@ export const CommandBar = () => {
         onClick={() => setOpen((open) => !open)}
         tabIndex={1}
       >
-        <div className="flex w-full rounded-md items-center justify-between px-16 py-4 bg-command-bar-background text-command-bar-foreground">
+        <div className="flex w-full rounded-md items-center justify-between px-16 py-4 bg-command-bar-background text-command-bar-foreground cursor-text">
           <p className="text-2xl">Search for anything</p>
           <Button
             variant="outline"
@@ -60,42 +60,61 @@ export const CommandBar = () => {
         </div>
       </div>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput
-          placeholder="Find info, Ask questions or Run queries"
-          onValueChange={(search) => {
-            if (search[0] !== "/" && !commandsMode) return;
-            if (search === "" && commandsMode) {
-              setCommandsMode(false);
-              return;
-            }
-            setCommandsMode(true);
-          }}
-        />
-        <div className="max-w-full">
-          <div className="whitespace-nowrap overflow-x-auto">
-            <div className="flex mx-4 gap-2">
-              {commandSuggestions.map((suggestion, i) => (
-                <SuggestedButton key={i}>{suggestion}</SuggestedButton>
-              ))}
+        <div
+          className="flex items-center border-b px-6 bg-command-bar-background rounded-2xl h-[70px] m-1 mb-2"
+          cmdk-input-wrapper=""
+        >
+          <CommandInput
+            placeholder="Find info, Ask questions or Run queries"
+            onValueChange={(search) => {
+              if (search[0] !== "/" && !commandsMode) return;
+              if (search === "" && commandsMode) {
+                setCommandsMode(false);
+                return;
+              }
+              setCommandsMode(true);
+            }}
+          />
+          <Button
+            variant="outline"
+            className="text-command-keys-foreground bg-card text-lg font-medium shadow-sm py-1 px-3 rounded-xl hover:bg-card hover:text-command-keys-foreground"
+          >
+            {commandsMode ? "⏎ Run command" : `\u2018/\u2019 for commands`}
+          </Button>
+        </div>
+        <div
+          className={`duration-200 transition-all ${
+            commandsMode ? "max-h-0 opacity-0" : "max-h-[128px] opacity-100" // 128px is the size of the suggestion and tabs, refactor by using ref to get dynamic height and pass to <CommandListItems /> as prop to maintain height on transition
+          }`}
+        >
+          <div className="max-w-full">
+            <div className="whitespace-nowrap overflow-x-auto">
+              <div className="flex mx-4 gap-2">
+                {commandSuggestions.map((suggestion, i) => (
+                  <SuggestedButton key={i}>{suggestion}</SuggestedButton>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="max-w-full">
-          <div className="flex justify-between items-center w-full px-4 my-2">
-            <CommandTabs
-              activeTab={activeTab}
-              tabOnClick={(tab) => setActiveTab(tab)}
-            />
-            <Button
-              asChild
-              variant="outline"
-              className="text-command-keys-foreground bg-white text-lg font-medium shadow-sm px-3 rounded-xl hover:bg-white hover:text-command-keys-foreground"
-            >
-              <div>
-                <DataTransferBoth className="rotate-90 -scale-y-100 w-6 h-6 mr-2" />
-                tabs
+          <div className="max-w-full">
+            <div className="flex justify-between items-center w-full px-4 my-2">
+              <div className="whitespace-nowrap overflow-x-auto mr-2">
+                <CommandTabs
+                  activeTab={activeTab}
+                  tabOnClick={(tab) => setActiveTab(tab)}
+                />
               </div>
-            </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="text-command-keys-foreground bg-white text-lg font-medium shadow-sm px-3 rounded-xl hover:bg-white hover:text-command-keys-foreground"
+              >
+                <div>
+                  <DataTransferBoth className="rotate-90 -scale-y-100 w-6 h-6 mr-2" />
+                  tabs
+                </div>
+              </Button>
+            </div>
           </div>
         </div>
         <div

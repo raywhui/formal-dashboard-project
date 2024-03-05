@@ -23,7 +23,7 @@ export const Card = ({ title, description, updates, stats }: ICardProps) => {
           <ShadcnCardTitle>{title}</ShadcnCardTitle>
           <ShadcnCardDescription>{description}</ShadcnCardDescription>
         </ShadcnCardHeader>
-        <ShadcnCardFooter className="text-sm font-light">
+        <ShadcnCardFooter className="text-sm font-light py-3">
           {updates && (
             <>
               <InfoIcon color="hsl(215 17 69%)" className="mr-2" />

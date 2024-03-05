@@ -90,7 +90,7 @@ export const CommandTabs = ({
   tabOnClick,
 }: CommandTabProps) => {
   return (
-    <div className="flex gap-2 flex-wrap py-4">
+    <div className="flex gap-2 py-4">
       {commandTabVariants.map(({ tab, text, Icon, color }) => (
         <Button
           key={text}

@@ -32,7 +32,6 @@ const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
       <DialogContent className="overflow-hidden p-0 shadow-lg">
         <Command
           filter={(value, search) => {
-            console.log(value);
             if (value.includes(search)) return 1;
             return 0;
           }}
@@ -49,10 +48,7 @@ const CommandInput = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Input>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
 >(({ className, ...props }, ref) => (
-  <div
-    className="flex items-center border-b px-6 bg-command-bar-background rounded-2xl h-[70px] m-1 mb-2"
-    cmdk-input-wrapper=""
-  >
+  <>
     <Search className="mr-2 h-8 w-8 shrink-0 opacity-50" />
     <CommandPrimitive.Input
       ref={ref}
@@ -62,13 +58,7 @@ const CommandInput = React.forwardRef<
       )}
       {...props}
     />
-    <Button
-      variant="outline"
-      className="text-command-keys-foreground bg-card text-lg font-medium shadow-sm py-1 px-3 rounded-xl hover:bg-card hover:text-command-keys-foreground"
-    >
-      &#8216;/&#8217; for commands
-    </Button>
-  </div>
+  </>
 ));
 
 CommandInput.displayName = CommandPrimitive.Input.displayName;

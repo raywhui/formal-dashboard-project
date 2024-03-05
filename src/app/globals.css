@@ -10,19 +10,23 @@
     --brand-tertiary: 234 73% 68%;
     --brand-gray-600: 215 16% 35%;
     --brand-gray-700: 240 5% 26%;
+    --brand-fill-50: 210 20 98%;
     --brand-fill-100: 210 35 96%;
     --brand-fill-200: 214 25% 91%;
     --brand-fill-400: 215 17% 69%;
+    --brand-fill-600: 215 16% 35%;
     --brand-text-primary: 0 0% 10%;
     --brand-text-secondary: 0 0% 10% / 0.7;
     --brand-text-tertiary: 0 0% 10% / 0.36;
     --brand-color-100: 216 100% 94%;
+    --brand-color-200: 216 100% 89%;
+    --brand-color-300: 218 100% 82%;
+    --brand-color-400: 223 97% 74%;
     --brand-color-600: 232 82% 59%;
     --brand-blue-100: 214 94% 93%;
     --brand-blue-600: 221 83% 53%;
     --brand-teal-50: 164 100% 95%;
     --brand-teal-600: 175 84% 32%;
-
     --background: 215 23 94%;
     --foreground: var(--brand-text-primary);
 
