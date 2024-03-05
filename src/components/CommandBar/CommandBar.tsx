@@ -39,11 +39,11 @@ export const CommandBar = () => {
         onClick={() => setOpen((open) => !open)}
         tabIndex={1}
       >
-        <div className="flex w-full rounded-md items-center justify-between px-16 py-4 bg-command-bar-background text-command-bar-foreground cursor-text">
+        <div className="flex w-full rounded-md items-center justify-between px-6 py-4 bg-command-bar-background text-command-bar-foreground cursor-text md:px-16">
           <p className="text-2xl">Search for anything</p>
           <Button
             variant="outline"
-            className="text-lg font-medium px-6 h-[58px] text-[rgb(100, 116, 139)]"
+            className="opacity-0 text-lg font-medium px-6 h-[58px] text-[rgb(100, 116, 139)] sm:opacity-100"
           >
             <LayoutGrid className="mr-3" />
             ⌘E

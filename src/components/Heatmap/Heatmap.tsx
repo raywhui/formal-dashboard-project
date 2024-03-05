@@ -34,9 +34,8 @@ export const Heatmap = ({ width, height, data }: HeatmapProps) => {
   const colorScale = d3
     .scaleSequential<string>()
     .range(["#F1F5F9", "#3D6EFF"])
-    .domain([min, max]); // Handle undefined values
+    .domain([min, max]);
 
-  // Build the rectangles
   const allRects = data.map((d, i) => {
     return (
       <g key={i}>
@@ -55,12 +54,13 @@ export const Heatmap = ({ width, height, data }: HeatmapProps) => {
   });
 
   return (
-    <div>
-      <svg width={width} height={height}>
-        <g width={width} height={height}>
-          {allRects}
-        </g>
-      </svg>
-    </div>
+    <svg
+      viewBox={`0 0 ${width} ${height}`}
+      className={`w-full sm:w-[${width}px]`}
+    >
+      <g width={width} height={height}>
+        {allRects}
+      </g>
+    </svg>
   );
 };

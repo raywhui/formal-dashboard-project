@@ -17,12 +17,15 @@ type ICardProps = {
 
 export const Card = ({ title, description, updates, stats }: ICardProps) => {
   return (
-    <ShadcnCard className="flex gap-10">
+    <ShadcnCard className="block gap-10 sm:flex md:w-max">
       <div className="flex flex-col justify-between">
         <ShadcnCardHeader>
           <ShadcnCardTitle>{title}</ShadcnCardTitle>
           <ShadcnCardDescription>{description}</ShadcnCardDescription>
         </ShadcnCardHeader>
+        <div className="pt-4 pb-1 block sm:hidden">
+          <ShadcnCardContent>{stats}</ShadcnCardContent>
+        </div>
         <ShadcnCardFooter className="text-sm font-light py-3">
           {updates && (
             <>
@@ -32,7 +35,7 @@ export const Card = ({ title, description, updates, stats }: ICardProps) => {
           )}
         </ShadcnCardFooter>
       </div>
-      <ShadcnCardContent>{stats}</ShadcnCardContent>
+      <ShadcnCardContent className="hidden sm:block">{stats}</ShadcnCardContent>
     </ShadcnCard>
   );
 };

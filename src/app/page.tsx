@@ -1,3 +1,7 @@
+"use client";
+
+import * as React from "react";
+import { ArrowRight } from "lucide-react";
 import Wrapper from "@/components/Wrapper";
 import Card from "@/components/Card";
 import Container from "@/components/Container";
@@ -5,12 +9,20 @@ import CommandBar from "@/components/CommandBar";
 import CardsContainer from "@/components/CardsContainer";
 import Stats from "@/components/Stats";
 import Heatmap from "@/components/Heatmap";
-import { barGraphDataGenerator, heatMapDataGenerator } from "@/lib/utils";
 import Bargraph from "@/components/Bargraph";
-import { ArrowRight } from "lucide-react";
+import { barGraphDataGenerator, heatMapDataGenerator } from "@/lib/utils";
+import { useDimensions } from "@/hooks";
 
-//  p-16
 export default function Home() {
+  // const bargraphDivRef = React.useRef(null);
+  // const heatmapDivRef = React.useRef(null);
+  // const { width: bargraphDivWidth, height: bargraphDivHeight } =
+  //   useDimensions(bargraphDivRef);
+  // const { width: heatmapDivWidth } = useDimensions(heatmapDivRef);
+
+  const barGraphData = React.useMemo(() => barGraphDataGenerator(), []);
+  const heatMapData = React.useMemo(() => heatMapDataGenerator(), []);
+
   return (
     <main className="flex min-h-screen flex-col">
       <div className="h-[90px] mb-4">
@@ -18,7 +30,7 @@ export default function Home() {
       </div>
       <Container>
         <Wrapper>
-          <h2 className="px-16 group">
+          <h2 className="px-6 group md:px-16">
             Recent
             <span className="inline-block ml-2 opacity-0 transition-all duration-400 ease-in-out group-hover:translate-x-2 group-hover:opacity-100 motion-reduce:transform-none">
               <ArrowRight className="text-brand-fill-600 text-lg" />
@@ -33,12 +45,8 @@ export default function Home() {
                 <div className="flex flex-col justify-between">
                   <p className="text-brand-text-secondary">Logs / Time</p>
                   <div className="py-4">
-                    <div className="h-full">
-                      <Bargraph
-                        width={348}
-                        height={102}
-                        data={barGraphDataGenerator()}
-                      />
+                    <div className="h-full w-full">
+                      <Bargraph width={348} height={102} data={barGraphData} />
                     </div>
                   </div>
                   <p className="font-light text-sm text-brand-text-tertiary">
@@ -50,7 +58,7 @@ export default function Home() {
           </CardsContainer>
         </Wrapper>
         <Wrapper>
-          <h2 className="px-16 group">
+          <h2 className="px-6 md:px-16 group">
             Saved
             <span className="inline-block ml-2 opacity-0 transition-all duration-400 ease-in-out group-hover:translate-x-2 group-hover:opacity-100 motion-reduce:transform-none">
               <ArrowRight className="text-brand-fill-600 text-lg" />
@@ -67,11 +75,7 @@ export default function Home() {
                     Contributions over 30 days
                   </p>
                   <div className="w-full py-4">
-                    <Heatmap
-                      width={348}
-                      height={102}
-                      data={heatMapDataGenerator()}
-                    />
+                    <Heatmap width={348} height={102} data={heatMapData} />
                   </div>
                   <div className="flex items-center gap-2">
                     <p className="font-light text-brand-text-tertiary">
@@ -97,7 +101,7 @@ export default function Home() {
                   <p className="text-brand-text-secondary">
                     Queries in database
                   </p>
-                  <div className="flex gap-2 py-4">
+                  <div className="flex gap-2 py-4 sm:min-w-[348px]">
                     <Stats title="Total queries" stat="78,513" />
                     <Stats title="Weekly trend" stat="250%" />
                   </div>
@@ -116,7 +120,7 @@ export default function Home() {
                   <p className="text-brand-text-secondary">
                     Queries in database
                   </p>
-                  <div className="flex gap-2 py-4">
+                  <div className="flex gap-2 py-4 sm:min-w-[348px]">
                     <Stats title="Total queries" stat="78,513" />
                     <Stats title="Weekly trend" stat="250%" />
                   </div>
@@ -134,12 +138,8 @@ export default function Home() {
                 <div className="flex flex-col justify-between">
                   <p className="text-brand-text-secondary">Logs / Time</p>
                   <div className="py-4">
-                    <div className="h-full">
-                      <Bargraph
-                        width={348}
-                        height={102}
-                        data={barGraphDataGenerator()}
-                      />
+                    <div className="h-full w-full">
+                      <Bargraph width={348} height={102} data={barGraphData} />
                     </div>
                   </div>
                   <p className="font-light text-sm text-brand-text-tertiary">

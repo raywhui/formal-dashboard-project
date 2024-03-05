@@ -36,10 +36,10 @@ export const Bargraph = ({ width, height, data }: BargraphProps) => {
 
   // Build the shapes
   const allShapes = data.map((d, i) => {
-    const y = yScale(d.value);
-    if (y === undefined) {
-      return null;
-    }
+    // const y = yScale(d.value);
+    // if (y === undefined) {
+    //   return null;
+    // }
 
     return (
       <g key={i}>
@@ -60,9 +60,9 @@ export const Bargraph = ({ width, height, data }: BargraphProps) => {
   });
 
   return (
-    <div>
-      <svg width={width} height={height}>
-        <g width={height} height={width}>
+    <div className={`w-full sm:w-[${width}px]`}>
+      <svg viewBox={`0 0 ${width} ${height}`} className={`w-full sm:w-[348px]`}>
+        <g width={width} height={height}>
           {allShapes}
         </g>
       </svg>
