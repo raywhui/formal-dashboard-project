@@ -17,7 +17,7 @@ export const Params = ({ children, variant = "brand" }: Params) => {
   return (
     <div
       className={cn(
-        "px-3 text-lg rounded-sm font-semibold",
+        "px-3 text-lg rounded-sm font-semibold h-fit",
         paramVariantClassNames[variant]
       )}
     >

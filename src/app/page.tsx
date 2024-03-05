@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { ArrowRight } from "lucide-react";
 import Wrapper from "@/components/Wrapper";
@@ -11,15 +9,8 @@ import Stats from "@/components/Stats";
 import Heatmap from "@/components/Heatmap";
 import Bargraph from "@/components/Bargraph";
 import { barGraphDataGenerator, heatMapDataGenerator } from "@/lib/utils";
-import { useDimensions } from "@/hooks";
 
 export default function Home() {
-  // const bargraphDivRef = React.useRef(null);
-  // const heatmapDivRef = React.useRef(null);
-  // const { width: bargraphDivWidth, height: bargraphDivHeight } =
-  //   useDimensions(bargraphDivRef);
-  // const { width: heatmapDivWidth } = useDimensions(heatmapDivRef);
-
   const barGraphData = React.useMemo(() => barGraphDataGenerator(), []);
   const heatMapData = React.useMemo(() => heatMapDataGenerator(), []);
 

@@ -145,6 +145,34 @@ const config = {
             opacity: "0",
           },
         },
+
+        "custom-enter-mobile": {
+          "0%": {
+            width: "100%",
+            top: "0",
+            transform: "translateX(-50%)",
+            opacity: "0",
+          },
+          "100%": {
+            width: "90%",
+            top: "10vh",
+            opacity: "100%",
+          },
+        },
+        "custom-exit-mobile": {
+          "0%": {
+            width: "90%",
+            top: "10vh",
+            opacity: "100%",
+          },
+          "100%": {
+            width: "100%",
+            top: "0",
+            transform: "translateX(-50%)",
+            opacity: "0",
+          },
+        },
+
         "custom-command-bar-exit": {
           "0%": {
             width: "100%",
@@ -200,6 +228,10 @@ const config = {
           "custom-enter var(--animation-duration) cubic-bezier(var(--animation-curve))",
         "custom-exit":
           "custom-exit var(--animation-duration) cubic-bezier(var(--animation-curve))",
+        "custom-enter-mobile":
+          "custom-enter-mobile var(--animation-duration) cubic-bezier(var(--animation-curve))",
+        "custom-exit-mobile":
+          "custom-exit-mobile var(--animation-duration) cubic-bezier(var(--animation-curve))",
         "custom-command-bar-exit":
           "custom-command-bar-exit var(--animation-duration) cubic-bezier(var(--animation-curve))",
         "custom-command-bar-enter":

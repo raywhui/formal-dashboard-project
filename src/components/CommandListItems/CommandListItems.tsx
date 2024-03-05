@@ -72,30 +72,39 @@ const CommandItems = ({
     >
       <div className="flex items-center">
         <div
-          className={`${
+          className={` ${
             iconBackgroundColor ? iconBackgroundColor : "bg-white"
-          } rounded-lg p-3 mr-3`}
+          } rounded-lg p-3 mr-3 self-start md:self-auto`}
         >
           <Icon className={`w-6 h-6 ${iconColor ? iconColor : "text-white"}`} />
         </div>
-        <span className="text-brand-text-primary font-medium text-2xl mr-3">
-          {title}
-        </span>
-        <div className="flex gap-2 mr-3">
-          {params &&
-            params.map(({ color, label }, i) => (
-              <Params key={i} variant={color}>
-                {label}
-              </Params>
-            ))}
+        <div
+          className={`flex flex-col  ${
+            params ? "gap-2" : "gap-0"
+          } md:flex-row md:items-center md:gap-0`}
+        >
+          <span className="text-brand-text-primary font-medium text-2xl mr-3">
+            {title}
+          </span>
+          {params && (
+            <div className="flex gap-2 mr-3">
+              {params.map(({ color, label }, i) => (
+                <Params key={i} variant={color}>
+                  {label}
+                </Params>
+              ))}
+            </div>
+          )}
+          <span className="text-brand-text-tertiary text-lg">
+            {description}
+          </span>
         </div>
-        <span className="text-brand-text-tertiary text-lg">{description}</span>
       </div>
       {shortcut && (
         <Button
           asChild
           variant="outline"
-          className="text-command-keys-foreground bg-white text-lg font-medium shadow-sm px-3 rounded-xl hover:bg-white hover:text-command-keys-foreground"
+          className="hidden text-command-keys-foreground bg-white text-lg font-medium shadow-sm px-3 rounded-xl hover:bg-white hover:text-command-keys-foreground sm:flex"
         >
           <div>{shortcut}</div>
         </Button>

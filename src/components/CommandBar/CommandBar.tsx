@@ -55,20 +55,36 @@ export const CommandBar = () => {
           className="flex items-center border-b px-6 bg-command-bar-background rounded-2xl h-[70px] m-1 mb-2"
           cmdk-input-wrapper=""
         >
-          <CommandInput
-            placeholder="Find info, Ask questions or Run queries"
-            onValueChange={(search) => {
-              if (search[0] !== "/" && !commandsMode) return;
-              if (search === "" && commandsMode) {
-                setCommandsMode(false);
-                return;
-              }
-              setCommandsMode(true);
-            }}
-          />
+          <div className="hidden items-center w-full sm:flex">
+            <CommandInput
+              placeholder="Find info, Ask questions or Run queries"
+              onValueChange={(search) => {
+                if (search[0] !== "/" && !commandsMode) return;
+                if (search === "" && commandsMode) {
+                  setCommandsMode(false);
+                  return;
+                }
+                setCommandsMode(true);
+              }}
+            />
+          </div>
+          <div className="flex items-center w-full sm:hidden">
+            <CommandInput
+              placeholder={`Find info or \u2018/\u2019 for commands`}
+              onValueChange={(search) => {
+                if (search[0] !== "/" && !commandsMode) return;
+                if (search === "" && commandsMode) {
+                  setCommandsMode(false);
+                  return;
+                }
+                setCommandsMode(true);
+              }}
+            />
+          </div>
+
           <Button
             variant="outline"
-            className="text-command-keys-foreground bg-card text-lg font-medium shadow-sm py-1 px-3 rounded-xl hover:bg-card hover:text-command-keys-foreground"
+            className="text-command-keys-foreground bg-card text-lg font-medium shadow-sm py-1 px-3 rounded-xl hover:bg-card hover:text-command-keys-foreground hidden sm:flex"
           >
             {commandsMode ? "⏎ Run command" : `\u2018/\u2019 for commands`}
           </Button>
@@ -79,8 +95,8 @@ export const CommandBar = () => {
           }`}
         >
           <div className="max-w-full">
-            <div className="whitespace-nowrap overflow-x-auto">
-              <div className="flex mx-4 gap-2">
+            <div className="whitespace-nowrap overflow-x-auto mx-4 sm:mx-0">
+              <div className="flex gap-2 sm:mx-4">
                 {commandSuggestions.map((suggestion, i) => (
                   <SuggestedButton key={i}>{suggestion}</SuggestedButton>
                 ))}
@@ -88,8 +104,8 @@ export const CommandBar = () => {
             </div>
           </div>
           <div className="max-w-full">
-            <div className="flex justify-between items-center w-full px-4 my-2">
-              <div className="whitespace-nowrap overflow-x-auto mr-2">
+            <div className="flex justify-between items-center w-full my-2 px-4">
+              <div className="whitespace-nowrap overflow-x-auto sm:mr-2">
                 <CommandTabs
                   activeTab={activeTab}
                   tabOnClick={(tab) => setActiveTab(tab)}
@@ -98,7 +114,7 @@ export const CommandBar = () => {
               <Button
                 asChild
                 variant="outline"
-                className="text-command-keys-foreground bg-white text-lg font-medium shadow-sm px-3 rounded-xl hover:bg-white hover:text-command-keys-foreground"
+                className="hidden text-command-keys-foreground bg-white text-lg font-medium shadow-sm px-3 rounded-xl hover:bg-white hover:text-command-keys-foreground sm:flex"
               >
                 <div>
                   <DataTransferBoth className="rotate-90 -scale-y-100 w-6 h-6 mr-2" />
@@ -120,7 +136,7 @@ export const CommandBar = () => {
             commandsMode={commandsMode}
           />
           <div className="flex justify-between items-center p-4">
-            <div className="flex items-center">
+            <div className="hidden items-center sm:flex">
               <Button
                 asChild
                 variant="outline"
@@ -135,7 +151,7 @@ export const CommandBar = () => {
               </p>
             </div>
             <div className="flex gap-6">
-              <div className="flex items-center">
+              <div className="hidden items-center sm:flex">
                 <Button
                   asChild
                   variant="outline"
@@ -149,7 +165,7 @@ export const CommandBar = () => {
                   Open
                 </p>
               </div>
-              <div className="flex items-center">
+              <div className="hidden items-center sm:flex">
                 <Button
                   asChild
                   variant="outline"
