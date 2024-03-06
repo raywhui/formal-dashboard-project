@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a take home project for Formal's Frontend Engineer Position based on their given Figma document. Outside of the specs of the document, the application is also mobile-responsive. The application was built on Next.js as the framework, [shadcn/ui](https://ui.shadcn.com/) for the primary UI library, and Vercel for deployment.
 
 ## Getting Started
 
-First, run the development server:
+A live demo of the site can be viewed here on Vercel: https://formal-dashboard-project.vercel.app/
+
+To run application locally, you can run the following commands:
 
 ```bash
+# 1. Clone this repo
+git clone git@github.com:raywhui/formal-dashboard-project.git
+
+# 2. Install packages
+npm i
+
+# 3. Run on development
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Notes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Here are some notes about the application and how it was built:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- The animation for the search bar transition was especially interesting. Due to how shadcn uses dialog, the search bar on the dashboard lives outside of the dialog content. My solution was to fake the transition but fading and moving the searchbar to where the dialog command bar would appear, and fade in the actual dialog. Animation for dialog exit is the same but backwards.
+- Primarily uses the shadcn library. I first thought about leaving those components alone, but documentation mentions that the components are meant to be customizable, so I decided against it. There are also a few times I needed to access shadcn components to make edits.
+- The barchart and heatmap values are randomly generated at built time using `heatMapDataGenerator()` and `barGraphDataGenerator()`. In reality, all the data would be provided via an API and can be generated client-side using `"use client"` for those components
 
-## Learn More
+## Fixes/Improvements Needed on the App
 
-To learn more about Next.js, take a look at the following resources:
+Given the time constraints of this assignment, there were a good amount of quality of life improvements I would've loved to have tackled. Here is a list of the following fixes/improvements I think can be made:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Charts are currently custom built with SVG's. Given the requirements that all the cards on the dashboard were the same size, these charts could have been better built to fully support mobile-responsiveness.
+- Many of the values are currently hard-coded or use fake data due to time constraints. These components can be easily converted to use real data.
+- Command Tabs are purely cosmetic at the moment. Functionality can be easily built.
+- Command list does not filter non-'/' commands on mobile, but works on desktop/mac.
+- There is an animation missing between switching between categories and commands. This could be done with some CSS animations and opacity changes, but would need a deeper dive into the `cmdk` library.
+- No unit tests currently exist.
+- Only tested on Chrome/Macbook. Futher testing needed for other platforms and browsers to ensure x-browser compatibility.
+- Cannot navigate the commands list with arrow keys.
+- The addition of animations is fun, but can be an issue for lower-spec devices. I would either remove them entirely or create a conditional to only run animations of more powerful hardware.
+- The colors in Figma were a little unorganized. I wasn't sure if the color values in the document corresponded with the ones provided in TailwindCSS. I ended up manually importing the colors. In a real working environment, I would seek clarity on this to avoid confusion.
+- Icons in Figma use the Iconoir icons, but were not apparent during development. In a real working environment, I would ask where these icons were sourced to avoid confusion.
