@@ -35,6 +35,8 @@ Given the time constraints of this assignment, there were a good amount of quali
 - Command list does not filter non-'/' commands on mobile, but works on desktop/mac.
 - There is an animation missing between switching between categories and commands. This could be done with some CSS animations and opacity changes, but would need a deeper dive into the `cmdk` library.
 - No unit tests currently exist.
+- Refactor code to maintain DRY coding practices.
+- Move all types into a `/src/types/*` folder for organization.
 - Only tested on Chrome/Macbook. Futher testing needed for other platforms and browsers to ensure x-browser compatibility.
 - Cannot navigate the commands list with arrow keys.
 - The addition of animations is fun, but can be an issue for lower-spec devices. I would either remove them entirely or create a conditional to only run animations of more powerful hardware.
