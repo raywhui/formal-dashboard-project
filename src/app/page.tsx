@@ -49,7 +49,7 @@ export default function Home() {
           </CardsContainer>
         </Wrapper>
         <Wrapper>
-          <h2 className="px-6 md:px-16 group">
+          <h2 className="px-6 pt-2 md:pt-0 md:px-16 group">
             Saved
             <span className="inline-block ml-2 opacity-0 transition-all duration-400 ease-in-out group-hover:translate-x-2 group-hover:opacity-100 motion-reduce:transform-none">
               <ArrowRight className="text-brand-fill-600 text-lg" />

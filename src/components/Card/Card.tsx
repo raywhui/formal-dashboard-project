@@ -8,14 +8,14 @@ import {
   CardTitle as ShadcnCardTitle,
 } from "@/components/ui/card";
 
-type ICardProps = {
+type CardProps = {
   title: string;
   description: string;
   updates?: string;
   stats?: React.ReactNode;
 };
 
-export const Card = ({ title, description, updates, stats }: ICardProps) => {
+export const Card = ({ title, description, updates, stats }: CardProps) => {
   return (
     <ShadcnCard className="block gap-10 sm:flex md:w-max">
       <div className="flex flex-col justify-between">

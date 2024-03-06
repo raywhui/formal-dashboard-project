@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as d3 from "d3";
 
-const BAR_PADDING = 0.37;
+const barPadding = 0.37;
 
 type BargraphProps = {
   width: number;
@@ -17,7 +17,7 @@ export const Bargraph = ({ width, height, data }: BargraphProps) => {
       .scaleBand()
       .domain(groups)
       .range([0, width])
-      .paddingInner(BAR_PADDING);
+      .paddingInner(barPadding);
   }, [width, groups]);
 
   const yScale = React.useMemo(() => {
@@ -34,13 +34,7 @@ export const Bargraph = ({ width, height, data }: BargraphProps) => {
     return "hsl(var(--brand-color-400))";
   };
 
-  // Build the shapes
   const allShapes = data.map((d, i) => {
-    // const y = yScale(d.value);
-    // if (y === undefined) {
-    //   return null;
-    // }
-
     return (
       <g key={i}>
         <rect

@@ -8,13 +8,17 @@ import { Button } from "@/components/ui/button";
 import SuggestedButton from "@/components/SuggestedButton";
 import CommandTabs from "@/components/CommandTabs";
 import CommandListItems from "@/components/CommandListItems";
-import { ActiveTabStrings } from "@/components/CommandTabs/CommandTabs";
-import { commandListItems, commandSuggestions } from "@/lib/utils";
+import {
+  ActiveTabStrings,
+  commandSuggestions,
+  commandListItems,
+} from "@/lib/data";
 
 export const CommandBar = () => {
   const [open, setOpen] = React.useState(false);
   const [commandsMode, setCommandsMode] = React.useState(false);
   const [activeTab, setActiveTab] = React.useState<ActiveTabStrings>("all");
+  const [inputValue, setInputValue] = React.useState("");
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -28,6 +32,21 @@ export const CommandBar = () => {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
+  const inputOnValueChange = (search: string) => {
+    setInputValue(search);
+    if (search[0] !== "/" && !commandsMode) return;
+    if (search === "" && commandsMode) {
+      setCommandsMode(false);
+      return;
+    }
+    setCommandsMode(true);
+  };
+
+  const commandsButtonOnClick = () => {
+    setInputValue("/");
+    setCommandsMode(true);
+  };
+
   return (
     <>
       <div
@@ -37,7 +56,6 @@ export const CommandBar = () => {
             : "animate-custom-command-bar-enter"
         }`}
         onClick={() => setOpen((open) => !open)}
-        tabIndex={1}
       >
         <div className="flex w-full rounded-md items-center justify-between px-6 py-4 bg-command-bar-background text-command-bar-foreground cursor-text md:px-16">
           <p className="text-2xl">Search for anything</p>
@@ -58,33 +76,22 @@ export const CommandBar = () => {
           <div className="hidden items-center w-full sm:flex">
             <CommandInput
               placeholder="Find info, Ask questions or Run queries"
-              onValueChange={(search) => {
-                if (search[0] !== "/" && !commandsMode) return;
-                if (search === "" && commandsMode) {
-                  setCommandsMode(false);
-                  return;
-                }
-                setCommandsMode(true);
-              }}
+              value={inputValue}
+              onValueChange={inputOnValueChange}
             />
           </div>
           <div className="flex items-center w-full sm:hidden">
             <CommandInput
               placeholder={`Find info or \u2018/\u2019 for commands`}
-              onValueChange={(search) => {
-                if (search[0] !== "/" && !commandsMode) return;
-                if (search === "" && commandsMode) {
-                  setCommandsMode(false);
-                  return;
-                }
-                setCommandsMode(true);
-              }}
+              value={inputValue}
+              onValueChange={inputOnValueChange}
             />
           </div>
 
           <Button
             variant="outline"
             className="text-command-keys-foreground bg-card text-lg font-medium shadow-sm py-1 px-3 rounded-xl hover:bg-card hover:text-command-keys-foreground hidden sm:flex"
+            onClick={commandsButtonOnClick}
           >
             {commandsMode ? "⏎ Run command" : `\u2018/\u2019 for commands`}
           </Button>
