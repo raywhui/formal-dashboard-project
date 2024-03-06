@@ -155,14 +155,14 @@ const config = {
           },
           "100%": {
             width: "90%",
-            top: "10vh",
+            top: "3vh",
             opacity: "100%",
           },
         },
         "custom-exit-mobile": {
           "0%": {
             width: "90%",
-            top: "10vh",
+            top: "3vh",
             opacity: "100%",
           },
           "100%": {
@@ -172,7 +172,6 @@ const config = {
             opacity: "0",
           },
         },
-
         "custom-command-bar-exit": {
           "0%": {
             width: "100%",
@@ -184,7 +183,7 @@ const config = {
             "max-height": "90px",
           },
           "100%": {
-            width: "75%",
+            width: "90%",
             top: "10vh",
             transform: "translateX(-50%)",
             left: "50%",
@@ -194,7 +193,7 @@ const config = {
         },
         "custom-command-bar-enter": {
           "0%": {
-            width: "75%",
+            width: "90%",
             top: "5%",
             transform: "translateX(-50%)",
             left: "50%",

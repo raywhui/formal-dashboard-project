@@ -54,7 +54,7 @@ export const CommandBar = () => {
           open === undefined
             ? ""
             : open
-            ? "animate-custom-command-bar-exit opacity-0"
+            ? "opacity-0 md:animate-custom-command-bar-exit"
             : "animate-custom-command-bar-enter"
         }`}
         onClick={() => setOpen((open) => !open)}
@@ -104,7 +104,7 @@ export const CommandBar = () => {
           }`}
         >
           <div className="max-w-full">
-            <div className="whitespace-nowrap overflow-x-auto mx-4 sm:mx-0">
+            <div className="whitespace-nowrap overflow-x-auto no-scrollbar mx-4 sm:mx-0">
               <div className="flex gap-2 sm:mx-4">
                 {commandSuggestions.map((suggestion, i) => (
                   <SuggestedButton key={i}>{suggestion}</SuggestedButton>
@@ -113,7 +113,7 @@ export const CommandBar = () => {
             </div>
           </div>
           <div className="max-w-full">
-            <div className="flex justify-between items-center w-full my-2 px-4">
+            <div className="flex justify-between items-center no-scrollbar w-full my-2 px-4">
               <div className="whitespace-nowrap overflow-x-auto sm:mr-2">
                 <CommandTabs
                   activeTab={activeTab}
