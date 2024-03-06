@@ -15,7 +15,7 @@ import {
 } from "@/lib/data";
 
 export const CommandBar = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState<boolean | undefined>(undefined); // set as undefined prevent animation on mount
   const [commandsMode, setCommandsMode] = React.useState(false);
   const [activeTab, setActiveTab] = React.useState<ActiveTabStrings>("all");
   const [inputValue, setInputValue] = React.useState("");
@@ -51,7 +51,9 @@ export const CommandBar = () => {
     <>
       <div
         className={`w-full absolute ${
-          open
+          open === undefined
+            ? ""
+            : open
             ? "animate-custom-command-bar-exit opacity-0"
             : "animate-custom-command-bar-enter"
         }`}
